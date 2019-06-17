@@ -7,4 +7,8 @@ interface Constants {
     enum class RequestType {
         GET, POST
     }
+    companion object {
+        val PLAIN_TEXT_TYPE = "plain_text"
+        val VARIABLE_TYPE = "variable"
+    }
 }

@@ -1,5 +1,6 @@
 package com.sandeep.scannertest.services
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -14,16 +15,12 @@ import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import com.sandeep.scannertest.R
-import org.json.JSONObject
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 
+@SuppressLint("StaticFieldLeak")
 object Utility {
-
     var mDialog: Dialog? = null;
     private var mProgresDetailMsg: TextView? = null
-
     fun getRectangleBorder(solidColor: Int, radius: FloatArray, strokeWidth: Int, strokeColor: Int): GradientDrawable {
         val gradientDrawable = GradientDrawable()
         gradientDrawable.setColor(solidColor)
@@ -81,23 +78,8 @@ object Utility {
 
     }
 
-    fun checkKeyExists(obj: Any, key: String): Boolean {
-        return if (obj is JSONObject && obj.has(key)) {
-            true
-        } else false
-    }
-
     fun showToast(context: Context, msg: String, toastType: Int, gravity: Int) {
         Toast.makeText(context, msg, toastType).show()
-    }
-
-    fun emailValidator(email: String): Boolean {
-        val pattern: Pattern
-        val matcher: Matcher
-        val EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-        pattern = Pattern.compile(EMAIL_PATTERN)
-        matcher = pattern.matcher(email)
-        return matcher.matches()
     }
 
     fun showProgressDialog(message: String, context: Context) {
@@ -138,4 +120,12 @@ object Utility {
         return network == NetworkInfo.State.CONNECTED || network == NetworkInfo.State.CONNECTING
     }
 
+    fun getSubHeaderColor(context: Context,color: String):Int {
+        if(color.equals("red",ignoreCase = true)) {
+            return context.resources.getColor(R.color.red)
+        }else  if(color.equals("green",ignoreCase = true)) {
+            return context.resources.getColor(R.color.green)
+        }
+        return context.resources.getColor(R.color.black)
+    }
 }
