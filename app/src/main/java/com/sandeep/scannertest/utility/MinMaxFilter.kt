@@ -1,7 +1,7 @@
-package com.sandeep.scannertest.dialogues
+package com.sandeep.scannertest.utility
 
-import android.text.Spanned
 import android.text.InputFilter
+import android.text.Spanned
 
 
 class MinMaxFilter(minValue: Int, maxValue: Int) : InputFilter {

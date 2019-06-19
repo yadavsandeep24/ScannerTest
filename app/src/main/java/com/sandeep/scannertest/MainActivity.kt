@@ -7,13 +7,19 @@ import android.os.Handler
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.sandeep.scannertest.activities.BaseActivity
+import com.sandeep.scannertest.activities.ScannerDetailActivity
 import com.sandeep.scannertest.adapter.ScannnerMainListAdapter
+import com.sandeep.scannertest.constants.Constants
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.databinding.ActivityMainBinding
 import com.sandeep.scannertest.listners.ScannerMainListItemClickListner
-import com.sandeep.scannertest.services.*
+import com.sandeep.scannertest.services.IServiceResponse
+import com.sandeep.scannertest.services.IServiceResponseListener
+import com.sandeep.scannertest.services.ScannerHelper
+import com.sandeep.scannertest.services.ServiceContoller
+import com.sandeep.scannertest.utility.Utility
 
 class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListItemClickListner {
     private lateinit var mDataBinding: ActivityMainBinding
@@ -21,7 +27,7 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
 
     override fun onListItemClick(id: Int) {
         val i = Intent(this@MainActivity, ScannerDetailActivity::class.java)
-        i.putExtra("scannerid", id)
+        i.putExtra(Constants.KEY_SCANNERID, id)
         startActivity(i)
     }
 
@@ -39,7 +45,7 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initialisation()
-        setToolbar("Scanner")
+        setToolbar(getString(R.string.title_scanner))
         getServiceData()
     }
 

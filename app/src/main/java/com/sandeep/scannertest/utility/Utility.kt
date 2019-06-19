@@ -1,4 +1,4 @@
-package com.sandeep.scannertest.services
+package com.sandeep.scannertest.utility
 
 import android.annotation.SuppressLint
 import android.app.Dialog

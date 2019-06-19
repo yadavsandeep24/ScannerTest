@@ -1,4 +1,4 @@
-package com.sandeep.scannertest.services
+package com.sandeep.scannertest.constants
 
 interface Constants {
     enum class SERVICETYPES {
@@ -12,5 +12,6 @@ interface Constants {
     companion object {
         val PLAIN_TEXT_TYPE = "plain_text"
         val VARIABLE_TYPE = "variable"
+        val KEY_SCANNERID ="scannerid"
     }
 }

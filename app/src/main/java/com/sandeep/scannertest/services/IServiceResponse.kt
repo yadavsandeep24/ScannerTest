@@ -1,5 +1,6 @@
 package com.sandeep.scannertest.services
 
+import com.sandeep.scannertest.constants.Constants
 import retrofit2.Response
 
 /**

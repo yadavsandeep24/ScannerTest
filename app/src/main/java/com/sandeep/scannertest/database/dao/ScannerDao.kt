@@ -1,6 +1,5 @@
 package com.sandeep.scannertest.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 

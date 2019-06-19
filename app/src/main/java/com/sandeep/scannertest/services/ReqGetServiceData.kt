@@ -1,6 +1,7 @@
 package com.sandeep.scannertest.services
 
 import android.content.Context
+import com.sandeep.scannertest.constants.Constants
 import retrofit2.Call
 import retrofit2.Response
 import java.util.*

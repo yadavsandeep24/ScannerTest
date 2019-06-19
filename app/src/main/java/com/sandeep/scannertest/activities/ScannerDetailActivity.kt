@@ -1,4 +1,4 @@
-package com.sandeep.scannertest
+package com.sandeep.scannertest.activities
 
 import android.content.Context
 import android.os.AsyncTask
@@ -8,26 +8,32 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.sandeep.scannertest.R
+import com.sandeep.scannertest.constants.Constants
 import com.sandeep.scannertest.database.AppDatabase
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.database.valueobjects.VariableVo
 import com.sandeep.scannertest.dialogues.ScannerVariableIndicatorDialog
 import com.sandeep.scannertest.dialogues.ScannerVariableValueDialog
 import com.sandeep.scannertest.parser.ScansConditionParser
-import com.sandeep.scannertest.services.Utility
+import com.sandeep.scannertest.utility.Utility
 
 class ScannerDetailActivity : BaseActivity(), ScansConditionParser.SpannableStringClickListener {
     override fun onClick(variableVO: VariableVo) {
         if (variableVO.isValue()) {
-            val dialog = ScannerVariableValueDialog(this@ScannerDetailActivity, R.style.CustomDialogTheme)
+            val dialog = ScannerVariableValueDialog(this@ScannerDetailActivity,
+                R.style.CustomDialogTheme
+            )
             dialog.setData(variableVO)
             dialog.show()
         } else if (variableVO.isIndicator()) {
-            val dialog = ScannerVariableIndicatorDialog(this@ScannerDetailActivity, R.style.CustomDialogTheme)
+            val dialog = ScannerVariableIndicatorDialog(this@ScannerDetailActivity,
+                R.style.CustomDialogTheme
+            )
             dialog.setData(variableVO)
             dialog.show()
         } else {
-            Utility.showToast(this, "New scanner type.", Toast.LENGTH_LONG)
+            Utility.showToast(this, getString(R.string.msg_new_scanner_variable), Toast.LENGTH_LONG)
         }
 
     }
@@ -37,9 +43,9 @@ class ScannerDetailActivity : BaseActivity(), ScansConditionParser.SpannableStri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner_detail)
-        setToolbar("Scanner Detail")
+        setToolbar(getString(R.string.title_scanner_detail))
         val bundle = intent.extras
-        scannerID = bundle!!.getInt("scannerid")
+        scannerID = bundle!!.getInt(Constants.KEY_SCANNERID)
         DoDataSavingTask().execute()
 
     }

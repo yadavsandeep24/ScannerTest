@@ -11,7 +11,7 @@
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Header"
+            android:text="@string/title_header"
             android:textColor="@color/white"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
     <TextView
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Set Paramaeters"
+            android:text="@string/title_set_paramaeters"
             android:textColor="@color/white"
             android:textAppearance="?android:attr/textAppearanceSmall"/>
     <LinearLayout android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="?android:attr/actionBarSize"
                 android:layout_alignParentLeft="true"
-                android:text="Period"
+                android:text="@string/title_period"
                 android:gravity="left|center_vertical"
                 android:layout_weight="1"
                 android:textColor="@color/black"
@@ -46,7 +46,6 @@
                 android:layout_height="?android:attr/actionBarSize"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/dark_blue"
-                android:text="10"
                 android:inputType="number"/>
     </LinearLayout>
 </LinearLayout>

@@ -1,9 +1,10 @@
-package com.sandeep.scannertest
+package com.sandeep.scannertest.activities
 
 import android.graphics.Color
 import android.os.Build
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.sandeep.scannertest.R
 
 open class BaseActivity : AppCompatActivity() {
     protected fun setToolbar(title: String) {

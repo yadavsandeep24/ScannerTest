@@ -4,14 +4,14 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.text.InputFilter
 import android.view.Window
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
 import com.sandeep.scannertest.R
 import com.sandeep.scannertest.database.valueobjects.VariableVo
-import android.text.InputFilter
-
+import com.sandeep.scannertest.utility.MinMaxFilter
 
 
 class ScannerVariableIndicatorDialog(mContext: Context, theme: Int) : Dialog(mContext, theme) {
@@ -39,7 +39,12 @@ class ScannerVariableIndicatorDialog(mContext: Context, theme: Int) : Dialog(mCo
     fun setData(variableVO: VariableVo) {
         tvHeader.text = variableVO.studyType!!.toUpperCase()
         edtStudyTypeValue.setText(variableVO.defaultValue.toString())
-        edtStudyTypeValue.setFilters(arrayOf<InputFilter>(MinMaxFilter(variableVO.minValue!!, variableVO.maxValue!!)))
+        edtStudyTypeValue.setFilters(arrayOf<InputFilter>(
+            MinMaxFilter(
+                variableVO.minValue!!,
+                variableVO.maxValue!!
+            )
+        ))
 
 
     }

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sandeep.scannertest.R
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.listners.ScannerMainListItemClickListner
-import com.sandeep.scannertest.services.Utility
+import com.sandeep.scannertest.utility.Utility
 
 
 class ScannnerMainListAdapter(private val mContext: Context, private val listener: ScannerMainListItemClickListner) :

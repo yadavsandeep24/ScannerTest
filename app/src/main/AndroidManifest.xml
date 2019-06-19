@@ -12,7 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ScannerDetailActivity" android:theme="@style/AppThemeNoActionBar">
+        <activity android:name=".activities.ScannerDetailActivity" android:theme="@style/AppThemeNoActionBar">
         </activity>
         <activity
                 android:name=".MainActivity"

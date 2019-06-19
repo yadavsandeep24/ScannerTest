@@ -1,5 +1,7 @@
 package com.sandeep.scannertest.services
 
+import com.sandeep.scannertest.constants.Constants
+
 /**
  * Created by Sandeep Y.
  */

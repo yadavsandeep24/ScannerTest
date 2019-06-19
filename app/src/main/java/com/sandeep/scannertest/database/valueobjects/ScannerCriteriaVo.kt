@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
-import com.sandeep.scannertest.services.Constants
+import com.sandeep.scannertest.constants.Constants
 
 
 class ScannerCriteriaVo {

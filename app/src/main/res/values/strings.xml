@@ -3,4 +3,10 @@
     <string name="al_please_wait">Please wait…</string>
     <string name="db_name">scannertest.db</string>
     <string name="al_no_network">Internet connection not available .</string>
+    <string name="title_scanner">Scanner</string>
+    <string name="msg_new_scanner_variable">New scanner type.</string>
+    <string name="title_scanner_detail">Scanner Detail</string>
+    <string name="title_header">Header</string>
+    <string name="title_set_paramaeters">Set Paramaeters</string>
+    <string name="title_period">Period</string>
 </resources>
