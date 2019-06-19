@@ -8,7 +8,8 @@ import java.util.*
 class ReqGetServiceData(
     private val url: String,
     private var headers: HashMap<String, String>,
-    private val mContext: Context) : IServiceRequest,
+    private val mContext: Context
+) : IServiceRequest,
     RetrofitResponseListener {
 
     internal lateinit var mResponse: GenericServiceResponse

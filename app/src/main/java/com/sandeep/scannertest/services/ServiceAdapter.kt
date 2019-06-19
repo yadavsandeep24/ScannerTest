@@ -17,8 +17,10 @@ class ServiceAdapter : IServiceInterFaceAdapter,
     }
 
 
-    override fun getScannerInfo(url: String, body: String, sType: Constants.SERVICETYPES,
-                                listner: IServiceResponseListener, context: Context) {
+    override fun getScannerInfo(
+        url: String, body: String, sType: Constants.SERVICETYPES,
+        listner: IServiceResponseListener, context: Context
+    ) {
         val req = ReqGetServiceData(url, getDefaultHeader(), context)
         setListner(listner, sType, req)
     }

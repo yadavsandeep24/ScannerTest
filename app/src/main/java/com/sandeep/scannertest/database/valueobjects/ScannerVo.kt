@@ -11,7 +11,7 @@ class ScannerVo {
     @PrimaryKey
     @ColumnInfo(name = "Id")
     @SerializedName("id")
-    var scannerID: Int =0
+    var scannerID: Int = 0
 
     @ColumnInfo(name = "Name")
     @SerializedName("name")

@@ -6,7 +6,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity : AppCompatActivity() {
-    protected fun setToolbar(title :String) {
+    protected fun setToolbar(title: String) {
         val mToolbar = findViewById(R.id.toolbar) as androidx.appcompat.widget.Toolbar
         setSupportActionBar(mToolbar)
         val actionBar = supportActionBar

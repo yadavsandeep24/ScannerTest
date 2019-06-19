@@ -37,6 +37,7 @@ class VariableVo {
     fun isValue(): Boolean {
         return VALUE_TYPE.equals(type)
     }
+
     fun isIndicator(): Boolean {
         return INDICATOR_TYPE.equals(type)
     }

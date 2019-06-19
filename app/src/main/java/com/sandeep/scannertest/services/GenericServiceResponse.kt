@@ -11,7 +11,7 @@ public class GenericServiceResponse : IServiceResponse {
     internal lateinit var mServiceType: Constants.SERVICETYPES
     private var mRequest: IServiceRequest? = null
     private var mResponse: Response<Any>? = null
-    private var err :Throwable?= null
+    private var err: Throwable? = null
 
     override fun getRequestTagName(): Constants.SERVICETYPES {
         return mServiceType
@@ -36,9 +36,11 @@ public class GenericServiceResponse : IServiceResponse {
     fun setServiceRequest(req: IServiceRequest) {
         this.mRequest = req
     }
+
     override fun getServiceError(): Throwable? {
         return err
     }
+
     fun setError(t: Throwable) {
         this.err = t
     }

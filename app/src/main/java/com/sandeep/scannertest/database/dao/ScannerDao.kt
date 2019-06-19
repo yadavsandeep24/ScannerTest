@@ -11,10 +11,10 @@ interface ScannerDao {
     val scannerInfo: LiveData<List<ScannerVo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-   fun insertScanners(vararg scannerVo: ScannerVo)
+    fun insertScanners(vararg scannerVo: ScannerVo)
 
-   @Delete
-   fun delete(scannerVos: ScannerVo)
+    @Delete
+    fun delete(scannerVos: ScannerVo)
 
     @Query("SELECT * FROM ScannerCondition where Id = :scannerID")
     fun getSelectedScanner(scannerID: Int): ScannerVo

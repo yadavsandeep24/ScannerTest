@@ -16,16 +16,15 @@ import com.sandeep.scannertest.database.viewModel.ScannerViewModel
 import com.sandeep.scannertest.databinding.ActivityMainBinding
 import com.sandeep.scannertest.listners.ScannerMainListItemClickListner
 import com.sandeep.scannertest.services.*
-import kotlinx.android.synthetic.main.activity_scanner_detail.*
 
 class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListItemClickListner {
-    private lateinit var  mDataBinding: ActivityMainBinding
+    private lateinit var mDataBinding: ActivityMainBinding
     private lateinit var mScannerViewModel: ScannerViewModel
     private lateinit var mScannerAdapter: ScannnerMainListAdapter
 
     override fun onListItemClick(id: Int) {
         val i = Intent(this@MainActivity, ScannerDetailActivity::class.java)
-        i.putExtra("scannerid",id)
+        i.putExtra("scannerid", id)
         startActivity(i)
     }
 
@@ -38,6 +37,7 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
         val resJsonObj = Gson().toJson(response.getServiceResponse()!!.body())
         DoDataSavingTask(Constants.SERVICETYPES.SCANNER_INFO).execute(resJsonObj)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -61,16 +61,18 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
             mScannerAdapter.setData(it as ArrayList<ScannerVo>)
         })
     }
+
     private fun getServiceData() {
         if (Utility.isNetworkConnectionAvailable(this)) {
             Utility.showProgressDialog(resources.getString(R.string.al_please_wait), this)
             val url = resources.getString(R.string.service_url_root)
             ServiceContoller.getInstance().getServiceAdapter().getScannerInfo(
-                url,"",
+                url, "",
                 Constants.SERVICETYPES.SCANNER_INFO,
-                this@MainActivity,this@MainActivity)
-        }else{
-            Utility.showToast(this,resources.getString(R.string.al_no_network),Toast.LENGTH_LONG)
+                this@MainActivity, this@MainActivity
+            )
+        } else {
+            Utility.showToast(this, resources.getString(R.string.al_no_network), Toast.LENGTH_LONG)
         }
     }
 
@@ -83,12 +85,13 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
         override fun doInBackground(vararg params: String): Any {
             when (mServiecType) {
                 Constants.SERVICETYPES.SCANNER_INFO -> {
-                    val list =ScannerHelper().setScannerData(params[0])
+                    val list = ScannerHelper().setScannerData(params[0])
                     if (list.size > 0) {
                         for (i in 0..list.size - 1) {
                             mScannerViewModel.insertScanner(list.get(i))
                         }
-                        mScannerViewModel.allScanners = AppDatabase.getInstance(this@MainActivity).scannerDao().scannerInfo
+                        mScannerViewModel.allScanners =
+                            AppDatabase.getInstance(this@MainActivity).scannerDao().scannerInfo
                     }
                 }
             }

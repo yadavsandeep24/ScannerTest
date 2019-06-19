@@ -11,8 +11,6 @@ import com.sandeep.scannertest.R
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.listners.ScannerMainListItemClickListner
 import com.sandeep.scannertest.services.Utility
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class ScannnerMainListAdapter(private val mContext: Context, private val listener: ScannerMainListItemClickListner) :
@@ -20,10 +18,10 @@ class ScannnerMainListAdapter(private val mContext: Context, private val listene
     internal var mScannerList: ArrayList<ScannerVo>? = null
 
     fun setData(ScannerList: ArrayList<ScannerVo>) {
-        if(mScannerList != null) {
+        if (mScannerList != null) {
             mScannerList!!.clear()
             mScannerList!!.addAll(ScannerList)
-        }else {
+        } else {
             this.mScannerList = ScannerList
         }
     }
@@ -37,7 +35,7 @@ class ScannnerMainListAdapter(private val mContext: Context, private val listene
         if (mScannerList != null) {
             holder.mTvHeader.setText(mScannerList!![position].name)
             holder.mTvSubHeader.setText(mScannerList!![position].tag)
-            holder.mTvSubHeader.setTextColor(Utility.getSubHeaderColor(mContext,mScannerList!![position].color))
+            holder.mTvSubHeader.setTextColor(Utility.getSubHeaderColor(mContext, mScannerList!![position].color))
             holder.mContainerView.setOnClickListener(View.OnClickListener {
                 listener.onListItemClick(mScannerList!![position].scannerID)
             })
@@ -45,15 +43,17 @@ class ScannnerMainListAdapter(private val mContext: Context, private val listene
         }
 
     }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         internal var mTvHeader: TextView
         internal var mTvSubHeader: TextView
-        internal var mContainerView : CardView
+        internal var mContainerView: CardView
+
         init {
             mTvHeader = itemView.findViewById(R.id.tv_header)
             mTvSubHeader = itemView.findViewById(R.id.tv_subheader)
-            mContainerView =itemView.findViewById(R.id.main_container)
+            mContainerView = itemView.findViewById(R.id.main_container)
         }
 
     }

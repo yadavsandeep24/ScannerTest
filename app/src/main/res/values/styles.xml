@@ -16,4 +16,13 @@
         <!-- Customize color of navigation drawer icon and back arrow -->
         <item name="colorControlNormal">#ffffff</item>
     </style>
+    <style name="CustomDialogTheme" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_light</item>
+    </style>
+
 </resources>

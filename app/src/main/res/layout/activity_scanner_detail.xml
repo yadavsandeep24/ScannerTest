@@ -14,8 +14,8 @@
             android:background="@color/colorPrimary"
             android:layout_marginBottom="15dp"
             android:layout_height="?android:attr/actionBarSize"
-            app:theme="@style/ToolbarTheme" />
-  <include layout="@layout/scanner_main_list_item"/>
+            app:theme="@style/ToolbarTheme"/>
+    <include layout="@layout/scanner_main_list_item"/>
     <LinearLayout
             android:id="@+id/scanner_condition_list_container"
             android:layout_width="wrap_content"

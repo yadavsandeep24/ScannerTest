@@ -10,6 +10,6 @@ interface IServiceResponse {
     fun getRequestTagName(): Constants.SERVICETYPES?
     fun getServiceResponse(): Response<Any>?
     fun getIServiceRequest(): IServiceRequest?
-    fun getServiceError():Throwable?
+    fun getServiceError(): Throwable?
 }
 

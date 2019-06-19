@@ -8,7 +8,7 @@ import java.util.*
 public class Converters {
     @TypeConverter
     public fun criteriaCollectionList(value: String): ArrayList<ScannerCriteriaVo>? {
-        val listType = object : TypeToken<ArrayList<ScannerCriteriaVo>>() { }.type
+        val listType = object : TypeToken<ArrayList<ScannerCriteriaVo>>() {}.type
         return Gson().fromJson<ArrayList<ScannerCriteriaVo>>(value, listType)
     }
 

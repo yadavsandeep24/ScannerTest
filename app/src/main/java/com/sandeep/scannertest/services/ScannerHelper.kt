@@ -1,10 +1,8 @@
 package com.sandeep.scannertest.services
 
-import android.content.Context
 import android.text.TextUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.sandeep.scannertest.database.AppDatabase
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import java.util.*
 

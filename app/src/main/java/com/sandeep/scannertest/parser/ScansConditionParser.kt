@@ -13,11 +13,11 @@ import com.sandeep.scannertest.database.valueobjects.ScannerCriteriaVo
 import com.sandeep.scannertest.database.valueobjects.VariableVo
 
 
-class ScansConditionParser(private val context: Context, listner:SpannableStringClickListener) {
+class ScansConditionParser(private val context: Context, listner: SpannableStringClickListener) {
     private val clickListener: SpannableStringClickListener? = listner
 
     interface SpannableStringClickListener {
-        fun onClick(variableVo:VariableVo)
+        fun onClick(variableVo: VariableVo)
     }
 
 
@@ -27,19 +27,33 @@ class ScansConditionParser(private val context: Context, listner:SpannableString
         for (str in predefinedScanCondition.getVariableKeys()) {
             val variableFor = predefinedScanCondition.getVariableFor(str)
             val indexOf = spannableStringBuilder.toString().indexOf(str)
-            spannableStringBuilder = spannableStringBuilder.replace(indexOf, str.length + indexOf, variableFor.getValueToDisplay())
-            addSpans(spannableStringBuilder, predefinedScanCondition,str, indexOf, indexOf + variableFor.getValueToDisplay().length)
+            spannableStringBuilder =
+                spannableStringBuilder.replace(indexOf, str.length + indexOf, variableFor.getValueToDisplay())
+            addSpans(
+                spannableStringBuilder,
+                predefinedScanCondition,
+                str,
+                indexOf,
+                indexOf + variableFor.getValueToDisplay().length
+            )
         }
         return spannableStringBuilder
     }
 
 
-    private fun addSpans(spannableStringBuilder: SpannableStringBuilder, predefinedScanCondition: ScannerCriteriaVo, str: String, i2: Int, i3: Int) {
+    private fun addSpans(
+        spannableStringBuilder: SpannableStringBuilder,
+        predefinedScanCondition: ScannerCriteriaVo,
+        str: String,
+        i2: Int,
+        i3: Int
+    ) {
         val span = object : ClickableSpan() {
             override fun onClick(view: View) {
                 val variableFor = predefinedScanCondition.getVariableFor(str)
                 clickListener!!.onClick(variableFor)
             }
+
             override fun updateDrawState(ds: TextPaint) {
                 ds.isUnderlineText = false
             }

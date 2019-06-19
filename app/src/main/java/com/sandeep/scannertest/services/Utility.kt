@@ -5,8 +5,6 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.StateListDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.view.LayoutInflater
@@ -64,10 +62,10 @@ object Utility {
         return network == NetworkInfo.State.CONNECTED || network == NetworkInfo.State.CONNECTING
     }
 
-    fun getSubHeaderColor(context: Context,color: String):Int {
-        if(color.equals("red",ignoreCase = true)) {
+    fun getSubHeaderColor(context: Context, color: String): Int {
+        if (color.equals("red", ignoreCase = true)) {
             return context.resources.getColor(R.color.red)
-        }else  if(color.equals("green",ignoreCase = true)) {
+        } else if (color.equals("green", ignoreCase = true)) {
             return context.resources.getColor(R.color.green)
         }
         return context.resources.getColor(R.color.black)

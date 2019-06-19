@@ -9,9 +9,9 @@ import com.sandeep.scannertest.database.valueobjects.ScannerVo
 class ScannerViewModel(application: Application) : AndroidViewModel(application) {
 
     private val scannerDao = AppDatabase.getInstance(application).scannerDao()
-    internal var allScanners : LiveData<List<ScannerVo>> = scannerDao.scannerInfo
+    internal var allScanners: LiveData<List<ScannerVo>> = scannerDao.scannerInfo
 
-    fun getSelectedScannerData(scannerID : Int) :ScannerVo{
+    fun getSelectedScannerData(scannerID: Int): ScannerVo {
         return scannerDao.getSelectedScanner(scannerID)
     }
 
