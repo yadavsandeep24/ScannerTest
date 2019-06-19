@@ -40,7 +40,6 @@ class ScannerVariableValueDialog(private val mContext: Context, theme: Int) : Di
 
     fun setData(variableVO: VariableVo) {
         valueAdapter.setData(variableVO.values!!)
-        valueAdapter.notifyDataSetChanged()
 
 
     }

@@ -39,7 +39,7 @@ class ScannerVariableIndicatorDialog(mContext: Context, theme: Int) : Dialog(mCo
     fun setData(variableVO: VariableVo) {
         tvHeader.text = variableVO.studyType!!.toUpperCase()
         edtStudyTypeValue.setText(variableVO.defaultValue.toString())
-        edtStudyTypeValue.setFilters(arrayOf<InputFilter>(MinMaxFilter(variableVO.minValue.toString(), variableVO.maxValue.toString())))
+        edtStudyTypeValue.setFilters(arrayOf<InputFilter>(MinMaxFilter(variableVO.minValue!!, variableVO.maxValue!!)))
 
 
     }

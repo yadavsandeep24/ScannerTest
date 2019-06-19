@@ -4,20 +4,11 @@ import android.text.Spanned
 import android.text.InputFilter
 
 
-class MinMaxFilter : InputFilter {
+class MinMaxFilter(minValue: Int, maxValue: Int) : InputFilter {
 
-    private var mIntMin: Int = 0
-    private var mIntMax: Int = 0
+    private var mIntMin: Int = minValue
+    private var mIntMax: Int = maxValue
 
-    constructor(minValue: Int, maxValue: Int) {
-        this.mIntMin = minValue
-        this.mIntMax = maxValue
-    }
-
-    constructor(minValue: String, maxValue: String) {
-        this.mIntMin = Integer.parseInt(minValue)
-        this.mIntMax = Integer.parseInt(maxValue)
-    }
 
     override fun filter(
         source: CharSequence,

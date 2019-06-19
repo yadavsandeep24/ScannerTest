@@ -15,15 +15,11 @@ import com.sandeep.scannertest.services.Utility
 
 class ScannnerMainListAdapter(private val mContext: Context, private val listener: ScannerMainListItemClickListner) :
     RecyclerView.Adapter<ScannnerMainListAdapter.ViewHolder>() {
-    internal var mScannerList: ArrayList<ScannerVo>? = null
+    internal var mScannerList: List<ScannerVo>? = null
 
-    fun setData(ScannerList: ArrayList<ScannerVo>) {
-        if (mScannerList != null) {
-            mScannerList!!.clear()
-            mScannerList!!.addAll(ScannerList)
-        } else {
-            this.mScannerList = ScannerList
-        }
+    fun setData(ScannerList: List<ScannerVo>) {
+        this.mScannerList = ScannerList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

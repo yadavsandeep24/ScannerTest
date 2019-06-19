@@ -13,6 +13,7 @@ class ValueAdapter : RecyclerView.Adapter<ValueAdapter.ViewHolder>() {
 
     fun setData(valueList: List<Double>) {
         this.mValueList = valueList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,16 +24,12 @@ class ValueAdapter : RecyclerView.Adapter<ValueAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (mValueList != null) {
             holder.mTvHeader.setText(mValueList!![position].toString())
-
-
         }
 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         internal var mTvHeader: TextView
-
         init {
             mTvHeader = itemView.findViewById(R.id.tv_dynamic_content)
         }

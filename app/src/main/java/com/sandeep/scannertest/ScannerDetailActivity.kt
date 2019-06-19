@@ -8,10 +8,9 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
+import com.sandeep.scannertest.database.AppDatabase
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.database.valueobjects.VariableVo
-import com.sandeep.scannertest.database.viewModel.ScannerViewModel
 import com.sandeep.scannertest.dialogues.ScannerVariableIndicatorDialog
 import com.sandeep.scannertest.dialogues.ScannerVariableValueDialog
 import com.sandeep.scannertest.parser.ScansConditionParser
@@ -33,7 +32,6 @@ class ScannerDetailActivity : BaseActivity(), ScansConditionParser.SpannableStri
 
     }
 
-    private lateinit var mScannerViewModel: ScannerViewModel
     var scannerID: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,14 +40,13 @@ class ScannerDetailActivity : BaseActivity(), ScansConditionParser.SpannableStri
         setToolbar("Scanner Detail")
         val bundle = intent.extras
         scannerID = bundle!!.getInt("scannerid")
-        mScannerViewModel = ViewModelProviders.of(this@ScannerDetailActivity).get(ScannerViewModel::class.java)
         DoDataSavingTask().execute()
 
     }
 
     inner class DoDataSavingTask() : AsyncTask<String, Void, ScannerVo>() {
         override fun doInBackground(vararg params: String): ScannerVo {
-            var scannerVo = mScannerViewModel.getSelectedScannerData(scannerID)
+            var scannerVo = AppDatabase.getInstance(this@ScannerDetailActivity).scannerDao().getSelectedScanner(scannerID)
             for (i in 0 until scannerVo.criteriaVos.size) {
                 val criteriaVOs = scannerVo.criteriaVos.get(i)
                 val builder = ScansConditionParser(

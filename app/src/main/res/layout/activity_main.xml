@@ -32,6 +32,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:adapter="@{adapter}"
+                tools:listitem="@layout/scanner_main_list_item"
                 android:layoutAnimation="@anim/layout_animation_slide_from_bottom"
                 app:layoutManager="@{layoutManager}"
                 app:layout_constraintVertical_bias="0.0"/>
