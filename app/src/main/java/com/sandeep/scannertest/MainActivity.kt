@@ -72,10 +72,6 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
 
     inner class DoDataSavingTask(internal var mServiecType: Constants.SERVICETYPES) : AsyncTask<String, Void,  ArrayList<ScannerVo>>() {
 
-        override fun onPreExecute() {
-            super.onPreExecute()
-        }
-
         override fun doInBackground(vararg params: String): ArrayList<ScannerVo>? {
             when (mServiecType) {
                 Constants.SERVICETYPES.SCANNER_INFO -> {

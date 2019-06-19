@@ -19,18 +19,18 @@ import com.sandeep.scannertest.parser.ScansConditionParser
 import com.sandeep.scannertest.utility.Utility
 
 class ScannerDetailActivity : BaseActivity(), ScansConditionParser.SpannableStringClickListener {
-    override fun onClick(variableVO: VariableVo) {
-        if (variableVO.isValue()) {
+    override fun onClick(variableVo: VariableVo) {
+        if (variableVo.isValue()) {
             val dialog = ScannerVariableValueDialog(this@ScannerDetailActivity,
                 R.style.CustomDialogTheme
             )
-            dialog.setData(variableVO)
+            dialog.setData(variableVo)
             dialog.show()
-        } else if (variableVO.isIndicator()) {
+        } else if (variableVo.isIndicator()) {
             val dialog = ScannerVariableIndicatorDialog(this@ScannerDetailActivity,
                 R.style.CustomDialogTheme
             )
-            dialog.setData(variableVO)
+            dialog.setData(variableVo)
             dialog.show()
         } else {
             Utility.showToast(this, getString(R.string.msg_new_scanner_variable), Toast.LENGTH_LONG)

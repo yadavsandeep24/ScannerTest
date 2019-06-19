@@ -9,4 +9,6 @@
     <string name="title_header">Header</string>
     <string name="title_set_paramaeters">Set Paramaeters</string>
     <string name="title_period">Period</string>
+    <string name="red">red</string>
+    <string name="green">green</string>
 </resources>

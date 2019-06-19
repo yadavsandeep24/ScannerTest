@@ -63,9 +63,9 @@ object Utility {
     }
 
     fun getSubHeaderColor(context: Context, color: String): Int {
-        if (color.equals("red", ignoreCase = true)) {
+        if (color.equals(context.getString(R.string.red), ignoreCase = true)) {
             return context.resources.getColor(R.color.red)
-        } else if (color.equals("green", ignoreCase = true)) {
+        } else if (color.equals(context.getString(R.string.green), ignoreCase = true)) {
             return context.resources.getColor(R.color.green)
         }
         return context.resources.getColor(R.color.black)
