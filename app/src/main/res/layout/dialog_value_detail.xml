@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/dark_blue">
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/value_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layoutAnimation="@anim/layout_animation_slide_from_bottom"/>
+</FrameLayout>
