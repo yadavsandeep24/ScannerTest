@@ -19,8 +19,9 @@ class ScannerVariableIndicatorDialog(mContext: Context, theme: Int) : Dialog(mCo
 
     private lateinit var edtStudyTypeValue: EditText
     private lateinit var tvHeader: TextView
-
+    private lateinit var inputValidator: StudtyTypeValueValidator
     init {
+
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.dialog_indicator_detail)
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -31,23 +32,23 @@ class ScannerVariableIndicatorDialog(mContext: Context, theme: Int) : Dialog(mCo
 
 
     private fun initView() {
+
         tvHeader = findViewById(R.id.header)
         edtStudyTypeValue = findViewById(R.id.edt_value)
 
     }
 
     fun setData(variableVO: VariableVo) {
+        inputValidator = StudtyTypeValueValidator(variableVO)
         tvHeader.text = variableVO.studyType!!.toUpperCase()
         edtStudyTypeValue.setText(variableVO.defaultValue.toString())
         edtStudyTypeValue.setFilters(arrayOf<InputFilter>(
-            MinMaxFilter(
-                variableVO.minValue!!,
-                variableVO.maxValue!!
+            MinMaxFilter(variableVO.minValue!!, variableVO.maxValue!!
             )
         ))
-
-
+        edtStudyTypeValue.addTextChangedListener(inputValidator)
     }
+
 }
 
 

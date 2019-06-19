@@ -18,6 +18,7 @@ class ScansConditionParser(private val context: Context, listner: SpannableStrin
 
     interface SpannableStringClickListener {
         fun onClick(variableVo: VariableVo)
+
     }
 
 
