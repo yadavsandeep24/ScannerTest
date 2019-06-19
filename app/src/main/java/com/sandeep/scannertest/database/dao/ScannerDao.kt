@@ -18,5 +18,4 @@ interface ScannerDao {
 
     @Query("SELECT * FROM ScannerCondition where Id = :scannerID")
     fun getSelectedScanner(scannerID: Int): ScannerVo
-
 }

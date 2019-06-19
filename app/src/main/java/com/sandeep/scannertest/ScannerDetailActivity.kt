@@ -3,19 +3,29 @@ package com.sandeep.scannertest
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.database.valueobjects.VariableVo
 import com.sandeep.scannertest.database.viewModel.ScannerViewModel
+import com.sandeep.scannertest.parser.ScansConditionParser
 import com.sandeep.scannertest.services.Utility
 
-class ScannerDetailActivity : BaseActivity() {
+class ScannerDetailActivity : BaseActivity(), ScansConditionParser.SpannableStringClickListener {
+    override fun onClick(variableVO: VariableVo) {
+        if(variableVO.isValue()) {
+
+        }else if(variableVO.isIndicator()) {
+
+        }else{
+            Utility.showToast(this,"New scanner type.",Toast.LENGTH_LONG)
+        }
+
+    }
 
     private lateinit var mScannerViewModel: ScannerViewModel
     var scannerID:Int = 0
@@ -32,29 +42,15 @@ class ScannerDetailActivity : BaseActivity() {
     }
 
     inner class DoDataSavingTask() : AsyncTask<String, Void, ScannerVo>() {
-
-        override fun onPreExecute() {
-            super.onPreExecute()
-        }
-
         override fun doInBackground(vararg params: String): ScannerVo {
             var scannerVo = mScannerViewModel.getSelectedScannerData(scannerID)
             for (i in 0 until scannerVo.criteriaVos.size) {
                 val criteriaVOs = scannerVo.criteriaVos.get(i)
-             if(criteriaVOs.isVariableText()) {
-                 val keyList = criteriaVOs.getVariableKeys()
-                 for (j in 0..keyList.size - 1) {
-                     val key =keyList.get(j)
-                     Log.d("PRISA",key)
-                     val keydata = criteriaVOs.variableVo.getAsJsonObject(key).toString()
-                     val gson = Gson()
-                     val listType = object : TypeToken<VariableVo>() {}.type
-                     val variableVo = gson.fromJson<VariableVo>(keydata, listType);
-                 }
-                }
+                val builder = ScansConditionParser(this@ScannerDetailActivity,this@ScannerDetailActivity).
+                    getVariableSpannableString(criteriaVOs)
+                scannerVo.criteriaVos[i].spanableBuilder = builder
             }
-
-            return mScannerViewModel.getSelectedScannerData(scannerID)
+            return scannerVo
         }
 
         override fun onPostExecute(scannerVo: ScannerVo) {
@@ -67,10 +63,12 @@ class ScannerDetailActivity : BaseActivity() {
                 val view = inflater_chapter.inflate(R.layout.scanner_detail_dynamic_list, null)
                 val tvContent: TextView
                 tvContent = view.findViewById(R.id.tv_dynamic_content)
-                tvContent.setText(scannerVo.criteriaVos.get(i).text +"\n\n and \n")
                 if(i == scannerVo.criteriaVos.size-1) {
-                    tvContent.setText(scannerVo.criteriaVos.get(i).text)
+                    tvContent.setText(scannerVo.criteriaVos.get(i).spanableBuilder)
+                }else {
+                    tvContent.setText(scannerVo.criteriaVos.get(i).spanableBuilder!!.append("\n\n and \n"))
                 }
+                tvContent.setMovementMethod(LinkMovementMethod.getInstance());
                 container.addView(view)
 
             }

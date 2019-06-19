@@ -21,64 +21,8 @@ import com.sandeep.scannertest.R
 object Utility {
     var mDialog: Dialog? = null;
     private var mProgresDetailMsg: TextView? = null
-    fun getRectangleBorder(solidColor: Int, radius: FloatArray, strokeWidth: Int, strokeColor: Int): GradientDrawable {
-        val gradientDrawable = GradientDrawable()
-        gradientDrawable.setColor(solidColor)
-        gradientDrawable.shape = GradientDrawable.RECTANGLE
-        gradientDrawable.cornerRadii = radius
-        gradientDrawable.setStroke(strokeWidth, strokeColor)
-        return gradientDrawable
-    }
 
-    fun setSelectorRoundedCorner(
-        context: Context, v: View, Stroke: Int, PrimarySolidColor: Int,
-        PressedSolidColor: Int, PrimaryBorderColor: Int, PressedBOrderColor: Int,
-        radius: Int
-    ) {
-        val states = StateListDrawable()
-
-        states.addState(
-            intArrayOf(android.R.attr.state_pressed), getRectangleBorder(
-                context.resources
-                    .getColor(PressedSolidColor),
-                floatArrayOf(
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat()
-                ),
-                Stroke,
-                context.resources.getColor(PressedBOrderColor)
-            )
-        )
-        states.addState(
-            intArrayOf(), getRectangleBorder(
-                context.resources.getColor(
-                    PrimarySolidColor
-                ),
-                floatArrayOf(
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat(),
-                    radius.toFloat()
-                ),
-                Stroke,
-                context.resources.getColor(PrimaryBorderColor)
-            )
-        )
-        v.setBackgroundDrawable(states)
-
-    }
-
-    fun showToast(context: Context, msg: String, toastType: Int, gravity: Int) {
+    fun showToast(context: Context, msg: String, toastType: Int) {
         Toast.makeText(context, msg, toastType).show()
     }
 

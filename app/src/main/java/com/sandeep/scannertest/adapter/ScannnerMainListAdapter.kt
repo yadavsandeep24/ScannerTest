@@ -12,8 +12,7 @@ import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import com.sandeep.scannertest.listners.ScannerMainListItemClickListner
 import com.sandeep.scannertest.services.Utility
 import java.util.*
-
-
+import kotlin.collections.ArrayList
 
 
 class ScannnerMainListAdapter(private val mContext: Context, private val listener: ScannerMainListItemClickListner) :
@@ -21,7 +20,12 @@ class ScannnerMainListAdapter(private val mContext: Context, private val listene
     internal var mScannerList: ArrayList<ScannerVo>? = null
 
     fun setData(ScannerList: ArrayList<ScannerVo>) {
+        if(mScannerList != null) {
+            mScannerList!!.clear()
+            mScannerList!!.addAll(ScannerList)
+        }else {
             this.mScannerList = ScannerList
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -9,23 +9,18 @@ import com.sandeep.scannertest.database.valueobjects.ScannerVo
 import java.util.*
 
 class ScannerHelper {
-    fun setScannerData(context: Context, data: String): Boolean {
-        var isError = true
+    fun setScannerData(data: String): ArrayList<ScannerVo> {
+        var list = ArrayList<ScannerVo>()
         try {
             if (!TextUtils.isEmpty(data)) {
                 val gson = Gson()
                 val listType = object : TypeToken<ArrayList<ScannerVo>>() {}.type
-                val list = gson.fromJson<ArrayList<ScannerVo>>(data, listType);
-                if (list.size > 0) {
-                    for (i in 0..list.size - 1) {
-                        AppDatabase.getInstance(context).scannerDao().insertScanners(list.get(i))
-                    }
-                    isError = false
-                }
+                list = gson.fromJson<ArrayList<ScannerVo>>(data, listType);
+
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return isError
+        return list
     }
 }
