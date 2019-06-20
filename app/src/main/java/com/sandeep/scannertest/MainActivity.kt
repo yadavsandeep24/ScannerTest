@@ -75,7 +75,7 @@ class MainActivity : BaseActivity(), IServiceResponseListener, ScannerMainListIt
         override fun doInBackground(vararg params: String): ArrayList<ScannerVo>? {
             when (mServiecType) {
                 Constants.SERVICETYPES.SCANNER_INFO -> {
-                   return  ScannerHelper().setScannerData(params[0])
+                   return  ScannerHelper().setScannerData(this@MainActivity,params[0])
                 }
             }
         }
